@@ -4,7 +4,7 @@
     // 1. Create object for product details
 
     const items = {
-        A: {
+        'A': {
             name: 'Apple',
             price: 0.5,
             image: '',
@@ -16,7 +16,7 @@
                 newPrice: 130,
             }
         },
-        B: {
+        'B': {
             name: 'Banana',
             price: 0.3,
             image: '',
@@ -26,7 +26,7 @@
                 newPrice: 45,
             }
         },
-        C: {
+        'C': {
             name: 'Orange',
             price: 0.2,
             image: '',
@@ -36,7 +36,7 @@
                 newPrice: 0,
             }
         },
-        D: {
+        'D': {
             name: 'Pear',
             price: 0.15,
             image: '',
@@ -68,6 +68,10 @@
     //    b. handle cart items and keep track of what's added.
         function handleAddToCart(event) {
             let addToCartBtn = event.target;
+            let itemId = addToCartBtn.parentElement.parentElement.dataset.productId;
+            addToCart(itemId);
+        }
+        function addToCart(itemId) {
             
         }
     //    c. Remove from cart button to remove
