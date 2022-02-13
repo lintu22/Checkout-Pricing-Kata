@@ -48,12 +48,30 @@
         },
         
     }
-        
+    
+    if (document.readyState == "loading") {
+        document.addEventListener('DOMContentLoaded', ready);
+    } else {
+        ready();
+    }
 
-    /* 2. Create functionality for add/remove cart
-        a. Add to bag button adds product
-        b. Remove from cart button to remove
-    */
+    function ready() {
+        // Add to cart button event listener
+        const addToCartBtns = document.querySelectorAll('.shop__cart-btn');
+        addToCartBtns.forEach(btn => btn.addEventListener('click', handleAddToCart));
+        
+    }
+
+    // 2. Create functionality for add/remove cart
+    //    a. Add to bag button adds product
+        
+    //    b. handle cart items and keep track of what's added.
+        function handleAddToCart(event) {
+            let addToCartBtn = event.target;
+            
+        }
+    //    c. Remove from cart button to remove
+   
 
 
 
