@@ -125,4 +125,10 @@
 
     // 4. Calculate totals
 
+    function updateTotals() {
+        const cartPrices = document.querySelectorAll('.cart__price');
+        const subtotalContainer = document.querySelector('.total__subtotal');
+
+
+    }
 
