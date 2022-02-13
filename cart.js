@@ -62,6 +62,9 @@
         const addToCartBtns = document.querySelectorAll('.shop__cart-btn');
         addToCartBtns.forEach(btn => btn.addEventListener('click', handleAddToCart));
         
+        // Remove from cart button event listener
+        const removeFromCartBtns = document.querySelectorAll('.cart__btn-remove');
+        removeFromCartBtns.forEach(btn => btn.addEventListener('click', handleRemoveFromCart));
     }
 
     // 2. Create functionality for add/remove cart
@@ -79,6 +82,7 @@
             const cartContainer = document.getElementById('cart');
             let newCartItem = document.createElement('div');
             newCartItem.classList.add('card', 'cart__item');
+            newCartItem.dataset.cartId = itemId;
             let cartItemTemplate = `
             <div class="row row-cols-4">
                 <div class="col-2 d-none d-sm-block">
@@ -98,13 +102,18 @@
                 <div class="col align-self-center text-center">
                     <button class="btn btn-danger cart__btn-remove">Remove</button>
                 </div>
-            </div>
-            `;
+            </div>`;
             newCartItem.innerHTML = cartItemTemplate;
             cartContainer.append(newCartItem);
+            newCartItem.getElementsByClassName('cart__btn-remove')[0].addEventListener('click', handleRemoveFromCart);
         }
     //    c. Remove from cart button to remove
-   
+    function handleRemoveFromCart(event) {
+        let removeBtnClick = event.target;
+        let cartId = removeBtnClick.parentElement.parentElement.parentElement.dataset.cartId;
+        console.log(cartId);
+        removeBtnClick.parentElement.parentElement.parentElement.remove();
+    }
 
 
 
