@@ -10,13 +10,25 @@
 </head>
 <body>
     <!-- Creating page with bootstrap to save time -->
-    <header class="row py-4">
-        <div class="col">
-            <h1>Groceries</h1>
-        </div>
-    </header>
+   
     <main class="container">
-        
+        <header class="row py-4">
+            <div class="col">
+                <h1>Groceries</h1>
+            </div>
+        </header>
+        <div class="row row-cols-lg-4 row-cols-2" id="shop">
+            <div class="card" data-product-id="A">
+                <img src="https://images.unsplash.com/photo-1579613832125-5d34a13ffe2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=200" class="card-img-top" alt="Apple">
+                <div class="card-body">
+                  <div class="row row-cols-2 justify-content-between pb-2">
+                      <h5 class="h4 card-title">Apple</h5>
+                      <p class="card-text h5 text-end">£0.50</p>
+                  </div>
+                  <button class="btn btn-success add-to-cart">Add to bag</button>
+                </div>
+              </div>
+        </div>
     </main>
     <script src="main.js"></script>
 </body>
