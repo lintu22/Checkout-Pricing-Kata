@@ -6,7 +6,7 @@
     const items = {
         'A': {
             name: 'Apple',
-            price: 0.5,
+            price: '0.50',
             image: '',
             // a. add boolean to show if product is on offer.
             onOffer: true,
@@ -18,7 +18,7 @@
         },
         'B': {
             name: 'Banana',
-            price: 0.3,
+            price: '0.30',
             image: '',
             onOffer: true,
             offerDetails: {
@@ -28,7 +28,7 @@
         },
         'C': {
             name: 'Orange',
-            price: 0.2,
+            price: '0.20',
             image: '',
             onOffer: false,
             offerDetails: {
@@ -38,7 +38,7 @@
         },
         'D': {
             name: 'Pear',
-            price: 0.15,
+            price: '0.15',
             image: '',
             onOffer: false,
             offerDetails: {
@@ -48,6 +48,8 @@
         },
         
     }
+    // Keep track of items in cart
+    let itemsInCart = [];
     
     if (document.readyState == "loading") {
         document.addEventListener('DOMContentLoaded', ready);
@@ -70,9 +72,36 @@
             let addToCartBtn = event.target;
             let itemId = addToCartBtn.parentElement.parentElement.dataset.productId;
             addToCart(itemId);
+            // Add item id to 'itemsInCart' for tracking;
+            itemsInCart.push(itemId);
         }
         function addToCart(itemId) {
-            
+            const cartContainer = document.getElementById('cart');
+            let newCartItem = document.createElement('div');
+            newCartItem.classList.add('card', 'cart__item');
+            let cartItemTemplate = `
+            <div class="row row-cols-4">
+                <div class="col-2 d-none d-sm-block">
+                    <img src="https://images.unsplash.com/photo-1579613832125-5d34a13ffe2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=200" alt="${items[itemId].name}" class="img-fluid">
+                </div>
+                <div class="col align-self-center text-center">
+                    <p class="card-text m-0 cart__name">
+                        ${items[itemId].name}
+                    </p>
+                    <p class="card-text cart__price">
+                    £${items[itemId].price}
+                    </p>
+                </div>
+                <div class="col align-self-center text-center">
+                    <p class="card-text cart__quantity">Quantity: <span class="cart__quantity-total">1</span></p>
+                </div>
+                <div class="col align-self-center text-center">
+                    <button class="btn btn-danger cart__btn-remove">Remove</button>
+                </div>
+            </div>
+            `;
+            newCartItem.innerHTML = cartItemTemplate;
+            cartContainer.append(newCartItem);
         }
     //    c. Remove from cart button to remove
    
